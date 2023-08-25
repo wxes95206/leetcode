@@ -25,6 +25,7 @@ Explanation: In this case, no transactions are done and the max profit = 0.
 
 """
 
+
 def max_profit(prices):
     profit_list = []
     for i in range(len(prices)):
