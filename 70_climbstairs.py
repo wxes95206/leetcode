@@ -25,6 +25,15 @@ Explanation: There are three ways to climb to the top.
 
 """
 
+
+
+"""
+
+
+
+
+"""
+
 def climbStairs(n):
         W = [0, 1, 2]
         for i in range(3, n+1):
