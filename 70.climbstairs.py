@@ -38,6 +38,8 @@ Explanation: There are three ways to climb to the top.
 迭代到 i = 5 時，我們計算 W[5] = W[3] + W[4] = 3 + 5 = 8，所以最終 W 變成 [0, 1, 2, 3, 5, 8]。
 """
 
+
+# 法一
 def climbStairs(n):
         W = [0, 1, 2]
         for i in range(3, n+1):
@@ -45,3 +47,38 @@ def climbStairs(n):
         return W[n]
 
 print(climbStairs(5))
+
+
+
+# 法二
+(Fibonacci series)
+
+'''
+1 step --> ans: 1
+2 steps--> ans: 2
+  1+1
+  2   
+3 steps --> ans:3  
+  1+1+1
+  1+2
+  2+1
+4 steps --> ans:5
+  1+1+1+1
+  1+2+1
+  1+1+2
+  2+1+1
+  2+2
+
+Fn = Fn-1 + Fn-2
+            
+
+'''
+def climbstarirs(n):
+    dp = [0]*(n+1)
+    dp[1] = 1
+    dp[2] = 2
+    for i in range(3,n+1):
+        dp[i] = dp[i-2] + dp[i-1]
+    return dp[-1]
+
+print(climbstarirs(5))
