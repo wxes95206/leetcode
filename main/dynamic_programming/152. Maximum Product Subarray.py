@@ -19,21 +19,28 @@ Output: 0
 Explanation: The result cannot be 2, because [-2,-1] is not a subarray.
 '''
 
+'''
+(negative)*(negative) = positive
+'''
 
-def max_product(n):
-    pos_pro_list = []
-    neg_pro_list = []
-    zero_list = []
+
+
+
+def maxProduct(n):
+    if len(n) == 0:
+        return 0
+
+    pos_max = n[0]
+    neg_min = n[0]
+    max_product_result = n[0]
 
     for i in range(1, len(n)):
-        if n[i - 1] * n[i] > 0:
-            pos_pro_list.append(n[i - 1] * n[i])
-        elif n[i - 1] * n[i] < 0:
-            neg_pro_list.append(n[i - 1] * n[i])
-        else:
-            zero_list.append(n[i - 1] * n[i])
-        
-        output = max(pos_pro_list,zero_list)
-        return max(output)
+        if n[i] < 0:
+            pos_max, neg_min = neg_min, pos_max  # 交換最大正乘積和最小負乘積
+        pos_max = max(n[i], pos_max * n[i])
+        neg_min = min(n[i], neg_min * n[i])
+        max_product_result = max(max_product_result, pos_max)
 
-print(max_product([2,3,-2,4]))  
+    return max_product_result
+
+print(maxProduct([-2,0,-1]))
